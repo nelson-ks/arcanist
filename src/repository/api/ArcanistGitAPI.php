@@ -1032,6 +1032,9 @@ final class ArcanistGitAPI extends ArcanistRepositoryAPI {
     // and treat it as though it as a file containing a list of other files,
     // which is silly.
 
+    if(!strlen($path)) {
+      $path = '.';
+    }
     list($stdout) = $this->execxLocal(
       'ls-tree %s -- %s',
       $revision,
